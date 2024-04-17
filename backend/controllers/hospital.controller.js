@@ -62,7 +62,7 @@ export const loginHospital = async(req, res) => {
             throw new Error("Hospital not found, Please check your credentials")
         }
 
-        const token = jwt.sign({hospitalId: existingHospital._id},process.env.JWT_SECRET)
+        const token = jwt.sign({hospitalId: existingHospital._id},"helloWorld")
 
         return res
         .status(200)
