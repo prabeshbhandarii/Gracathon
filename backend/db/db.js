@@ -1,6 +1,6 @@
-import mongoose from "mongoose"
+const mongoose = require('mongoose')
 
-export const connectToDb = async() =>{
+const connectToDb = async() =>{
 try {
     await mongoose.connect('mongodb+srv://pratishbhandari2:csnO7wFnoCgIelUE@cluster0.ba59iqf.mongodb.net/')
 
@@ -10,3 +10,5 @@ try {
     console.log("Failed to connect with mongodb: " + error)
 }
 }
+
+module.exports = connectToDb
