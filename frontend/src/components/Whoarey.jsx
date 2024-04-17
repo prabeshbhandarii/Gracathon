@@ -20,10 +20,10 @@ const Whoarey = () => {
           className="w-full flex justify-center items-center  "
         >
           <p align="center" className=" w-7/12 text-lg text-black">
-            <b className="">"Swasthya Yatri"</b> is your trusted companion on
-            the journey towards better health. Our app seamlessly connects users
-            with nearby doctors, making it easy to schedule appointments and
-            access quality healthcare services.
+            <b className="">"Carer"</b> is your trusted companion on the journey
+            towards better health. Our app seamlessly connects users with nearby
+            doctors, making it easy to schedule appointments and access quality
+            healthcare services.
           </p>
         </motion.div>
       </motion.div>

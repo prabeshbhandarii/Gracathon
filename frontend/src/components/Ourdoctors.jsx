@@ -29,14 +29,14 @@ const Ourdoctors = () => {
             className=""
           >
             <p className=" p-10 text-md">
-              Swasthya Yatri is proud to offer access to more than 5000 trusted
-              doctors in our network. These doctors cover a wide range of
-              medical fields and specialties, ensuring that our users can find
-              the right healthcare provider for their needs. Each doctor in our
-              network is carefully selected for their expertise and commitment
-              to providing excellent care. Whether you need a general check-up
-              or specialized treatment, Swasthya Yatri is here to connect you
-              with the perfect doctor to meet your healthcare needs.
+              Carer is proud to offer access to more than 5000 trusted doctors
+              in our network. These doctors cover a wide range of medical fields
+              and specialties, ensuring that our users can find the right
+              healthcare provider for their needs. Each doctor in our network is
+              carefully selected for their expertise and commitment to providing
+              excellent care. Whether you need a general check-up or specialized
+              treatment, Swasthya Yatri is here to connect you with the perfect
+              doctor to meet your healthcare needs.
             </p>
           </motion.div>
         </div>
