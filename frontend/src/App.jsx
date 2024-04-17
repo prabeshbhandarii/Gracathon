@@ -50,6 +50,7 @@ const App = () => {
                   <Route path="/Profiledoctor" element={<Profiledoctor />} />
                   <Route path="/Hospital/:id" element={<Hospitalblog />} />
                 </Route>
+
                 <Route path="/cms" element={<Sidebarcms />}>
                   <Route index element={<div>Pratik</div>} />
                   <Route path="user" element={<div>Prabesh</div>} />
