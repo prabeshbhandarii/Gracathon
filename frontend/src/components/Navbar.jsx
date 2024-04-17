@@ -27,10 +27,9 @@ const Navbar = () => {
   return (
     <>
       <div className="navbar bg-gradient-to-r from-cyan-500 to-blue-500  text-white    h-20 flex justify-around items-center ">
-        <div className=" flex justify-around items-center h-20 w-11/12 mx-auto ">
+        {/* <div className=" flex justify-around items-center h-20 w-11/12 mx-auto ">
 
           <div>
-            {" "}
             <a className=" hover:bg-transparent text-white border-none cursor-pointer text-2xl  font-semibold">
               Carer
             </a>
@@ -105,7 +104,6 @@ const Navbar = () => {
           }
         </div>
       </div >
-      <Outlet />
     </>
   );
 };
