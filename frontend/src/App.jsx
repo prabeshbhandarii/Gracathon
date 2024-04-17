@@ -1,35 +1,56 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
-
-function App() {
-  const [count, setCount] = useState(0)
+import { useState, useEffect } from "react";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  BrowserRouter,
+} from "react-router-dom";
+import Home from "./pages/Home";
+import About from "./pages/About";
+import Navbar from "./components/Navbar";
+import Contact from "./pages/Contact";
+import Signup from "./pages/Signup";
+// import Login from "./profile/Login";
+import Footer from "./components/Footer";
+import Loader from "./utils/Loader";
+import Aos from "aos";
+import "aos/dist/aos.css";
+// import Sidebarusers from "./Sidebar/Sidebaruser";
+const App = () => {
+  const [loader, setloader] = useState(true);
+  useEffect(() => {
+    Aos.init({ easing: "ease", duration: 700 });
+  }, []);
+  useEffect(() => {
+    setTimeout(() => {
+      setloader(false);
+    }, 2000);
+  });
 
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
-}
+    <div className="">
+      {loader ? (
+        <Loader />
+      ) : (
+        <div className="">
+          <BrowserRouter>
+            <Routes>
+              <Route element={<Navbar />}>
+                <Route path="/" element={<Home />} />
+                <Route path="/About" element={<About />} />
+                <Route path="/Contact" element={<Contact />} />
+                {/* <Route path="/login" element={<Login />} /> */}
+                <Route path="/Signup" element={<Signup />} />
+              </Route>
+            </Routes>
+          </BrowserRouter>
 
-export default App
+          <Footer />
+          {/* <Sidebarusers /> */}
+        </div>
+      )}
+    </div>
+  );
+};
+
+export default App;
