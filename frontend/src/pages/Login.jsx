@@ -2,7 +2,7 @@ import React, { useContext, useState } from "react";
 import { FaHospitalUser } from "react-icons/fa6";
 import { FaHospital } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
+import axios from "../HOC/axios";
 import { UserContext } from "../utils/userContext";
 
 const Login = () => {
@@ -43,10 +43,7 @@ const Login = () => {
   const handleUserLogin = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post(
-        "http://localhost:3000/api/v1/user/login",
-        user
-      );
+      const res = await axios.post("/api/v1/user/login", user);
 
       console.log(res);
 
@@ -72,7 +69,7 @@ const Login = () => {
     e.preventDefault();
     try {
       const res = await axios
-        .post("http://localhost:3000/api/v1/hospital/login", hospital)
+        .post("/api/v1/hospital/login", hospital)
         .then((res) => {
           console.log("pratik", res);
           localStorage.setItem("hospital", res.data);
@@ -98,8 +95,8 @@ const Login = () => {
           <div className="py-6 flex justify-center items-center">
             <button
               onClick={() => setLoginAs("user")}
-              className={`btn hover:text-white m-4 bg-[#ffffff]
-              ${loginAs === "user" ? "bg-[#41518B] text-white" : ""}
+              className={`btn hover:text-white m-4 
+              ${loginAs === "user" ? "bg-[#41518B] text-white" : "bg-[#ffffff]"}
                text-[#41518B]`}
             >
               <FaHospitalUser className="w-5 h-5" />
@@ -107,9 +104,13 @@ const Login = () => {
             </button>
             <button
               onClick={() => setLoginAs("hospital")}
-              className={`btn hover:text-white m-4 bg-[#ffffff]
-              ${loginAs === "hospital" ? "bg-[#41518B] text-white" : ""}
-               text-[#41518B]`}
+              className={`btn hover:text-white m-4 
+              ${
+                loginAs === "hospital"
+                  ? "bg-[#41518B] text-white"
+                  : " text-[#41518B] bg-[#ffffff]"
+              }
+              `}
             >
               <FaHospital className="w-5 h-5" />
               Login as a Hospital

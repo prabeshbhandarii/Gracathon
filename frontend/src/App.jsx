@@ -17,10 +17,12 @@ import Aos from "aos";
 import Profiledoctor from "./components/Profiledoctor";
 import Hospitalblog from "./components/Hospitalblog";
 import Sidebarcms from "./Sidebar_cms";
+import Adddoctor from "./components/Adddoctor";
 // import Doctor from "./components/Doctor";
 import "aos/dist/aos.css";
 import Layout from "./HOC/Layout";
 import UserProfile from "./pages/UserProfile";
+import Datadoctor from "./components/Datadoctor";
 // import Sidebarusers from "./Sidebar/Sidebaruser";
 const App = () => {
   const [loader, setloader] = useState(true);
@@ -47,16 +49,15 @@ const App = () => {
                   <Route path="About" element={<About />} />
                   <Route path="Contact" element={<Contact />} />
                   <Route path="login" element={<Login />} />
-                  {/* <Route path="Profile" element={< />} /> */}
+                  <Route path="Profile" element={<UserProfile />} />
                   <Route path="Signup" element={<Signup />} />
                   <Route path="Profiledoctor" element={<Profiledoctor />} />
                   <Route path="Hospital/:id" element={<Hospitalblog />} />
                 </Route>
-
                 <Route path="/cms" element={<Sidebarcms />}>
-                  <Route index element={<div>Pratik</div>} />
-                  <Route path="user" element={<div>Prabesh</div>} />
-                  <Route path="kanvan" element={<div>P</div>} />
+                  <Route index element={<Datadoctor />} />
+                  <Route path="user" element={<Adddoctor />} />
+                  <Route path="kanvan" element={<div>p</div>} />
                 </Route>
               </Routes>
             </BrowserRouter>
