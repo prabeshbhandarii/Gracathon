@@ -1,7 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link, Outlet } from "react-router-dom";
+import { UserContext } from "../utils/userContext";
 
 const Navbar = () => {
+  const { userData } = useContext(UserContext);
+
   const navData = [
     {
       title: "Home",
@@ -53,12 +56,23 @@ const Navbar = () => {
             </ul>
           </div>
           <div>
-            <Link
-              to={"/login"}
-              className=" bg-white text-blue-700 font-bold px-4 py-2 rounded-lg hover:opacity-90 flex justify-center items-center"
-            >
-              Login
-            </Link>
+            {userData?.success ? (
+              <Link to={"/Profile"} className="flex items-center gap-4">
+                <img
+                  src=""
+                  alt=""
+                  className="h-10 w-10 rounded-full bg-black "
+                />
+                <p>{userData?.data.username}</p>
+              </Link>
+            ) : (
+              <Link
+                to={"/login"}
+                className=" bg-white text-blue-700 font-bold px-4 py-2 rounded-lg hover:opacity-90 flex justify-center items-center"
+              >
+                Login
+              </Link>
+            )}
             {/* <Link to={"/profile"} className="flex items-center gap-4">
                   <img src="" alt="" className="h-10 w-10 rounded-full bg-black "/>
                   <p>Username</p>
