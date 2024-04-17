@@ -1,6 +1,6 @@
 
 import express from 'express'
-import { createUser, loginUser, logoutUser } from '../controllers/user.controller.js'
+import { createUser, loginUser, logoutUser, updateUser } from '../controllers/user.controller.js'
 import { authMiddleware } from '../middleware/authUserMiddleware.js'
 
 const router = express.Router()
@@ -11,6 +11,7 @@ router.post('/login', loginUser)
 
 router.use(authMiddleware)
 router.get("/logout", logoutUser)
+router.get("/update", updateUser)
 
 
 
