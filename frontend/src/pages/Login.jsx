@@ -1,9 +1,13 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { FaHospitalUser } from "react-icons/fa6";
 import { FaHospital } from "react-icons/fa";
 import {useNavigate} from "react-router-dom"
+import axios from "axios";
+import { UserContext } from "../utils/userContext";
 
 const Login = () => {
+
+  const { updateUser } = useContext(UserContext);
 
   const navigate = useNavigate()
 
@@ -12,10 +16,14 @@ const Login = () => {
     password: "",
 })
 
+console.log(user)
+
 const [hospital, setHospital] = useState({
     email: "",
     password: "", 
 })
+
+console.log(hospital);
 
 const [loginAs, setLoginAs] = useState("user")
 
@@ -40,15 +48,11 @@ const hospitalOnchangeHandler = (e)=>{
 const handleUserLogin = async(e) =>{
      e.preventDefault()
         try {
-            const res = await fetch("http://localhost:3000/api/v1/user/login",{
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                  },
-                 body: JSON.stringify(user)
-            })
+          const res = await axios.post("http://localhost:3000/api/v1/user/login", user)
 
-            const data = res.json().data
+          console.log(res)
+
+          const data = res.data
 
             console.log(data);
 
@@ -56,6 +60,10 @@ const handleUserLogin = async(e) =>{
 
            throw new Error("Error while login")
             }
+
+            updateUser(data)
+
+            localStorage.setItem("user", JSON.stringify(data))
 
             navigate("/")
 
@@ -70,15 +78,11 @@ const handleUserLogin = async(e) =>{
 const handleHospitalLogin = async(e) =>{
   e.preventDefault()
     try {
-        const res = await fetch("http://localhost:3000/api/v1/hospital/login",{
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-              },
-             body: JSON.stringify(hospital)
-        })
+      const res = await axios.post("http://localhost:3000/api/v1/hospital/login", hospital)
 
-        const data = res.json().data
+      const data = res.data
+
+      console.log(data);
 
         console.log(data);
 
@@ -154,7 +158,7 @@ const handleHospitalLogin = async(e) =>{
                  Login
               </button>
               <hr />
-              <button className="btn mt-4 ml-4 mr-4 bg-[#f1f1f1] border-none hover:text-white text-[#41518B]">
+              <button onClick={()=> navigate("/Signup")} className="btn mt-4 ml-4 mr-4 bg-[#f1f1f1] border-none hover:text-white text-[#41518B]">
               
                  Create a New Account
               </button>
@@ -206,7 +210,7 @@ const handleHospitalLogin = async(e) =>{
                  Login
               </button>
               <hr />
-              <button onCanPlay={"/Signup"} className="btn mt-4 ml-4 mr-4 bg-[#f1f1f1] border-none hover:text-white text-[#41518B]">
+              <button onClick={()=> navigate("/Signup")} className="btn mt-4 ml-4 mr-4 bg-[#f1f1f1] border-none hover:text-white text-[#41518B]">
               
                  Create a New Account
               </button>

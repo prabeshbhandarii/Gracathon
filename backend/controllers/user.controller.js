@@ -60,7 +60,7 @@ const loginUser = async(req, res) => {
 
         const data = await User.findById({_id: existingUser._id}).select("-password")
 
-        const token = jwt.sign({userId: existingUser._id}, process.env.JWT_SECRET)
+        const token = jwt.sign({userId: existingUser._id}, "helloWorld")
 
         return res
         .cookie("userToken", token)
