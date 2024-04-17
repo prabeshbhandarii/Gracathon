@@ -144,7 +144,7 @@ const updateUser = async(req, res) => {
     }
 }
 
-export {
+export  {
     createUser,
     loginUser,
     logoutUser,
