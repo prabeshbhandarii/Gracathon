@@ -7,7 +7,7 @@ import { UserContext } from "../utils/userContext";
 
 const Login = () => {
 
-  const { updateUser } = useContext(UserContext);
+  const { updateUser, updateHospital } = useContext(UserContext);
 
   const navigate = useNavigate()
 
@@ -63,7 +63,7 @@ const handleUserLogin = async(e) =>{
 
             updateUser(data)
 
-            localStorage.setItem("user", JSON.stringify(data))
+            localStorage.setItem("token", JSON.stringify(data.token))
 
             navigate("/")
 
@@ -82,11 +82,13 @@ const handleHospitalLogin = async(e) =>{
 
       const data = res.data
 
-      console.log(data);
-
         console.log(data);
 
-        localStorage.setItem("hospital", JSON.stringify(data))
+        updateHospital(data)
+
+        localStorage.setItem("token", JSON.stringify(data.token))
+
+        navigate("/cms")
 
     } catch (error) {
         console.log("Error while login Hospital")

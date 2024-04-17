@@ -80,6 +80,8 @@ const Login = () => {
 
       setLoginAs("hospital");
 
+
+
       navigate("/login");
     } catch (error) {
       console.log("Error while signing Hospital");
@@ -172,7 +174,7 @@ const Login = () => {
                   Sign up
                 </button>
                 <hr />
-                <button className="btn mt-4 ml-4 mr-4 bg-[#f1f1f1] border-none hover:text-white text-[#41518B]">
+                <button onClick={()=> navigate("/login")} className="btn mt-4 ml-4 mr-4 bg-[#f1f1f1] border-none hover:text-white text-[#41518B]">
                   Already have an account?
                 </button>
               </div>
@@ -243,7 +245,7 @@ const Login = () => {
                 </button>
                 <hr />
                 <button
-                  onCanPlay={"/Signup"}
+                  onClick={()=> navigate("/login")}
                   className="btn mt-4 ml-4 mr-4 bg-[#f1f1f1] border-none hover:text-white text-[#41518B]"
                 >
                   Already have an account?
