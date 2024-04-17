@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import Hospitalblog from "../components/Hospitalblog";
 const Hospital = [
   {
     image: "./src/assets/Butwalhos.jpg",
@@ -38,7 +39,7 @@ const Appointmentbox = () => {
       <div className="py-20 w-11/12 mx-auto grid grid-cols-3 gap-10">
         {Hospital.map((val, i) => {
           return (
-            <Link to="/Contact">
+            <Link to={`/Hospital/${i}`}>
               <div className="card  card-compact w-80  h-96 grid  bg-white shadow-xl cursor-pointer hover:scale-105   transition-all delay-100 duration-300 ease-in-out">
                 <figure>
                   <img
@@ -47,7 +48,7 @@ const Appointmentbox = () => {
                     className="w-96 h-72 object-cover rounded-lg"
                   />
                 </figure>
-                <div className="w-11/12 mx-auto">
+                <div className="w-11/12 mx-auto font-semibold">
                   <h2 className="  text-black">{val.name}</h2>
 
                   <div className="flex items-center justify-end">
