@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import Hospitalblog from "../components/Hospitalblog";
 import { motion } from "framer-motion";
+
 const Hospital = [
   {
     image: "./src/assets/Butwalhos.jpg",
@@ -53,9 +54,9 @@ const Appointmentbox = () => {
                   <h2 className="  text-black">{val.name}</h2>
 
                   <div className="flex items-center justify-end">
-                    <button className="bg-blue-700  p-2 rounded-lg text-white border-transparent">
+                    <div className="bg-blue-700  p-2 rounded-lg text-white border-transparent">
                       {val.button}
-                    </button>
+                    </div>
                   </div>
                 </div>
               </div>

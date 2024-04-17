@@ -12,7 +12,7 @@ const Datadoctor = () => {
               </h2>
 
               <div className=" flex  justify-center text-xl">
-                <p className="text-3xl text-white">300+</p>
+                <p className="text-3xl text-white">30+</p>
               </div>
             </div>
           </div>
@@ -23,7 +23,7 @@ const Datadoctor = () => {
               </h2>
 
               <div className=" flex  justify-center text-xl">
-                <p className="text-3xl text-white">300+</p>
+                <p className="text-3xl text-white">100+</p>
               </div>
             </div>
           </div>
