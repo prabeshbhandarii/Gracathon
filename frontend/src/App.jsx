@@ -20,6 +20,7 @@ import Sidebarcms from "./Sidebar_cms";
 // import Doctor from "./components/Doctor";
 import "aos/dist/aos.css";
 import Layout from "./HOC/Layout";
+import UserProfile from "./pages/UserProfile";
 // import Sidebarusers from "./Sidebar/Sidebaruser";
 const App = () => {
   const [loader, setloader] = useState(true);
@@ -47,6 +48,7 @@ const App = () => {
                   <Route path="/Contact" element={<Contact />} />
                   <Route path="/login" element={<Login />} />
                   <Route path="/Signup" element={<Signup />} />
+                  <Route path="/Profile" element={<UserProfile />} />
                   <Route path="/Profiledoctor" element={<Profiledoctor />} />
                   <Route path="/Hospital/:id" element={<Hospitalblog />} />
                 </Route>

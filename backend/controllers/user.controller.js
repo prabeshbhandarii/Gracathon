@@ -58,7 +58,7 @@ const loginUser = async(req, res) => {
             })
         }
 
-        const data = await User.findById({_id: existingUser._id}).select("-password")
+        const data = await User.findById({_id: existingUser._id})
 
         const token = jwt.sign({userId: existingUser._id}, "helloWorld")
 
@@ -131,9 +131,11 @@ const updateUser = async(req, res) => {
         throw new Error("Error while updating user")
     }
 
+    const data = await User.findById({_id: updatedUser._id})
+
     res.status(200).json({
         message: "Successfully updated the user",
-        data: updateUser,
+        data: data,
         status: true
     })
 
