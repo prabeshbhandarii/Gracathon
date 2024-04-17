@@ -20,6 +20,7 @@ import Sidebarcms from "./Sidebar_cms";
 // import Doctor from "./components/Doctor";
 import "aos/dist/aos.css";
 import Layout from "./HOC/Layout";
+import UserProfile from "./pages/UserProfile";
 // import Sidebarusers from "./Sidebar/Sidebaruser";
 const App = () => {
   const [loader, setloader] = useState(true);
