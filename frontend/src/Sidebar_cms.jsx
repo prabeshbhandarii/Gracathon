@@ -37,7 +37,7 @@ const Sidebarcms = () => {
             <ul className="space-y-2 font-medium flex flex-col gap-5 ">
               <li className="py-2">
                 <Link
-                  href="#"
+                  to="/cms/"
                   className="flex items-center p-2  rounded-lg text-white  hover:bg-blue-700  group"
                 >
                   <svg
@@ -54,8 +54,8 @@ const Sidebarcms = () => {
                 </Link>
               </li>
               <li className="py-2">
-                <a
-                  href="#"
+                <Link
+                  to="/cms/user"
                   className="flex items-center p-2  rounded-lg text-white  hover:bg-blue-700 dark:text-white  group"
                 >
                   <svg
@@ -71,7 +71,7 @@ const Sidebarcms = () => {
                   <span className="inline-flex items-center justify-center px-2 ms-3 text-sm font-medium text-gray-800 bg-gray-100 rounded-full dark:bg-gray-700 dark:text-gray-300">
                     Pro
                   </span>
-                </a>
+                </Link>
               </li>
               <li className="py-2">
                 <a

@@ -19,6 +19,7 @@ import Hospitalblog from "./components/Hospitalblog";
 import Sidebarcms from "./Sidebar_cms";
 // import Doctor from "./components/Doctor";
 import "aos/dist/aos.css";
+import Layout from "./HOC/Layout";
 // import Sidebarusers from "./Sidebar/Sidebaruser";
 const App = () => {
   const [loader, setloader] = useState(true);
@@ -39,9 +40,8 @@ const App = () => {
         ) : (
           <div className="">
             <BrowserRouter>
-              <Navbar />
               <Routes>
-                <Route>
+                <Route element={<Layout />}>
                   <Route path="/" element={<Home />} />
                   <Route path="/About" element={<About />} />
                   <Route path="/Contact" element={<Contact />} />
@@ -49,14 +49,14 @@ const App = () => {
                   <Route path="/Signup" element={<Signup />} />
                   <Route path="/Profiledoctor" element={<Profiledoctor />} />
                   <Route path="/Hospital/:id" element={<Hospitalblog />} />
-                  <Route path="/cms" element={<Sidebarcms />}>
-                    <Route index element={<div>Pratik</div>} />
-                  </Route>
+                </Route>
+                <Route path="/cms" element={<Sidebarcms />}>
+                  <Route index element={<div>Pratik</div>} />
+                  <Route path="user" element={<div>Prabesh</div>} />
+                  <Route path="kanvan" element={<div>P</div>} />
                 </Route>
               </Routes>
             </BrowserRouter>
-
-            <Footer />
 
             {/* <Sidebarusers /> */}
           </div>
