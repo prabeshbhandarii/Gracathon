@@ -1,20 +1,21 @@
-import React from "react";
+import React, { useState } from "react";
+import { CiGlass, CiSearch } from "react-icons/ci";
 const Doctor = [
   {
     name: "Dr. Pratik Pandey",
-    qualification: "MD",
+    qualification: "Cardiology",
     appointment: "Take an Appointment",
     image: "./src/assets/Pp.jpg",
   },
   {
     name: "Dr. Sanchit Pandey",
-    qualification: "MBBS",
+    qualification: "Neurology",
     appointment: "Take an Appointment",
     image: "./src/assets/sp.jpg",
   },
   {
     name: "Dr. Anu Pandey",
-    qualification: "NP",
+    qualification: "Orthopedics: ",
     appointment: "Take an Appointment",
     image: "./src/assets/Ap.jpg",
   },
@@ -26,18 +27,25 @@ const Doctor = [
   },
   {
     name: "Dr. Pratish Bhandari",
-    qualification: "Pshycologist",
+    qualification: "Dermatology",
     appointment: "Take an Appointment",
     image: "./src/assets/Ptishb.jpg",
   },
   {
     name: "Dr. Prabesh Bhandari",
-    qualification: "MBBS",
+    qualification: "Pulmonology: ",
     appointment: "Take an Appointment",
     image: "./src/assets/pb.jpg",
   },
 ];
+
 const Profiledoctor = () => {
+  const [Search, setSearch] = useState("");
+  const Filter = (options) => {
+    return options.filter(
+      (x) => x["name"].toLowerCase().indexOf(Search.toLowerCase()) > -1
+    );
+  };
   return (
     <>
       <div className="w-full flex justify-center items-center py-10 font-black text-black bg-white">
@@ -49,8 +57,21 @@ const Profiledoctor = () => {
           </div>
         </div>
       </div>
+      <div className="bg-white flex justify-end items-center pr-10">
+        <input
+          id="name"
+          type="text"
+          onChange={(e) => {
+            console.log(e.target.value);
+            setSearch(e.target.value);
+          }}
+          className="w-52 h-10 rounded-lg bg-gray-200 pl-2 "
+          placeholder="Search"
+        />
+        <CiSearch for="name" className="w-8 h-6 text-black cursor-pointer" />
+      </div>
       <div className="bg-white grid grid-cols-2 gap-10 py-10 ">
-        {Doctor.map((val, i) => {
+        {Filter(Doctor).map((val, i) => {
           return (
             <div className=" flex   shadow-xl h-52 cursor-pointer rounded-lg bg-gray-200  hover:scale-105 transition-all delay-75 duration-200 ease-in w-10/12 mx-auto">
               <figure className="">

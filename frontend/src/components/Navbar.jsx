@@ -104,8 +104,8 @@ const Navbar = () => {
 
           }
         </div>
-      </div >
-      <Outlet />
+      </div>
+
     </>
   );
 };

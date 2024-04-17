@@ -1,10 +1,3 @@
-// // initial={{ opacity: 0.25, x: -50 }}
-// //             whileInView={{ opacity: 1, x: 0 }}
-// //             transition={{ duration: 1 }}
-// // initial={{ opacity: 0.25, x: 50 }}
-// //             whileInView={{ opacity: 1, x: 0 }}
-// //             transition={{ duration: 1 }}
-
 // import React from 'react'
 
 // const Contact = () => {
@@ -92,7 +85,7 @@
 // export default Contact
 
 import React from "react";
-
+import { motion } from "framer-motion";
 const Contact = () => {
   return (
     <>
@@ -103,15 +96,23 @@ const Contact = () => {
         >
           <div className="relative left-1/2 -z-10 aspect-[1155/678] w-[36.125rem] max-w-none -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-30 sm:left-[calc(50%-40rem)] sm:w-[72.1875rem]"></div>
         </div>
-        <div className="mx-auto max-w-2xl text-center">
+        <motion.div
+          initial={{ opacity: 0.25, x: -200 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          transition={{ duration: 1 }}
+          className="mx-auto max-w-2xl text-center"
+        >
           <h2 className=" font-black tracking-tight text-gray-900 sm:text-6xl">
             Contact Us
           </h2>
           <p className="mt-2 text-lg leading-8 text-gray-600">
             Feel free to ask any question.
           </p>
-        </div>
-        <form
+        </motion.div>
+        <motion.form
+          initial={{ opacity: 0.25, x: 50 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          transition={{ duration: 1 }}
           action="#"
           method="POST"
           className="mx-auto mt-16 max-w-xl sm:mt-20"
@@ -254,7 +255,7 @@ const Contact = () => {
               Let's talk
             </button>
           </div>
-        </form>
+        </motion.form>
       </div>
     </>
   );
