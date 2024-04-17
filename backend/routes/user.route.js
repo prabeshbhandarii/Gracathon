@@ -11,7 +11,7 @@ router.post('/login', loginUser)
 
 router.use(authMiddleware)
 router.get("/logout", logoutUser)
-router.get("/update", updateUser)
+router.post("/update", updateUser)
 
 
 
