@@ -18,6 +18,7 @@ import Profiledoctor from "./components/Profiledoctor";
 import Hospitalblog from "./components/Hospitalblog";
 // import Doctor from "./components/Doctor";
 import "aos/dist/aos.css";
+import UserProfile from "./pages/UserProfile";
 // import Sidebarusers from "./Sidebar/Sidebaruser";
 const App = () => {
   const [loader, setloader] = useState(true);
@@ -46,6 +47,7 @@ const App = () => {
                   <Route path="/Contact" element={<Contact />} />
                   <Route path="/login" element={<Login />} />
                   <Route path="/Signup" element={<Signup />} />
+                  <Route path="/Profile" element={<UserProfile />} />
                   <Route path="/Profiledoctor" element={<Profiledoctor />} />
                   <Route path="/Profiledoctor" element={<Profiledoctor />} />
                   <Route path="/Hospital/:id" element={<Hospitalblog />} />
