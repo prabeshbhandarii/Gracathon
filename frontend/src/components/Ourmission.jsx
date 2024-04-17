@@ -22,7 +22,7 @@ const Ourmission = () => {
                 align="left"
                 className="w-10/12"
               >
-                Our mission at Swasthya Yatri is to revolutionize healthcare
+                Our mission at Carer is to revolutionize healthcare
                 accessibility by providing a user-friendly platform that
                 seamlessly connects individuals with nearby doctors and
                 facilitates hassle-free appointment scheduling. Through our
@@ -40,7 +40,7 @@ const Ourmission = () => {
                 initial={{ opacity: 1, x: 50 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 transition={{ duration: 1 }}
-                src="./src/assets/dt_150501_doctor_patient_ipad_tablet_800x600.jpg"
+                src="./src/assets/Doctorpatient.jpg"
                 alt=""
                 className="w-96 h-96 object-cover border-8 border-gray-200  rounded-lg absolute top-0 right-24"
               />

@@ -27,7 +27,7 @@ const Footer = () => {
   return (
     <>
       <div>
-        <footer className="  p-10 text-[#EAEBED] bg-[#6737c1]">
+        <footer className="  p-10 text-[#EAEBED] bg-[#6737c1] flex gap-10">
           <aside>
             <div className="flex ">
               <img

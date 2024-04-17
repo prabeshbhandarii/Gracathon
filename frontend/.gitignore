@@ -11,8 +11,6 @@ node_modules
 dist
 dist-ssr
 *.local
-src/pages/About.jsx
-src/pages/Contact.jsx
 
 
 # Editor directories and files
