@@ -10,6 +10,7 @@ router.post('/signup', createUser)
 router.post('/login', loginUser)
 
 router.use(authMiddleware)
+
 router.get("/logout", logoutUser)
 router.post("/update", updateUser)
 

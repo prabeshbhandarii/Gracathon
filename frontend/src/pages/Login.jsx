@@ -6,7 +6,9 @@ import axios from "axios";
 import { UserContext } from "../utils/userContext";
 
 const Login = () => {
-  const { updateUser } = useContext(UserContext);
+
+  const { updateUser, updateHospital } = useContext(UserContext);
+
 
   const navigate = useNavigate();
 
@@ -54,6 +56,7 @@ const Login = () => {
 
       console.log(data);
 
+            localStorage.setItem("token", JSON.stringify(data.token))
       if (!data.success) {
         throw new Error("Error while login");
       }
@@ -80,9 +83,14 @@ const Login = () => {
 
       const data = res.data;
 
-      console.log(data);
+        console.log(data);
 
-      console.log(data);
+        updateHospital(data)
+
+        localStorage.setItem("token", JSON.stringify(data.token))
+
+        navigate("/cms")
+
 
       localStorage.setItem("hospital", JSON.stringify(data));
     } catch (error) {

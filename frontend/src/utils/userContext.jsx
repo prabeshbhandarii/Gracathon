@@ -6,6 +6,7 @@ const UserContext = createContext();
 // Step 2: Create a provider component to update the context with user information
 const UserProvider = ({ children }) => {
   const [userData, setUserData] = useState(null);
+  const [hospitalData, setHospitalData] = useState(null);
 
   const updateUser = (data) => {
     console.log(data);
@@ -19,8 +20,12 @@ const UserProvider = ({ children }) => {
     }
   }, [localStorage]);
 
+  const updateHospital = (data) => {
+    setHospitalData(data)
+  }
+
   return (
-    <UserContext.Provider value={{ userData, updateUser }}>
+    <UserContext.Provider value={{ userData, updateUser, hospitalData, updateHospital }}>
       {children}
     </UserContext.Provider>
   );
