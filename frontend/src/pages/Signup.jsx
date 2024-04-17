@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { FaHospitalUser } from "react-icons/fa6";
 import { FaHospital } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
+import axios from "../HOC/axios";
 
 const Login = () => {
   const navigate = useNavigate();
