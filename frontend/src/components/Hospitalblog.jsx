@@ -1,6 +1,8 @@
 import React from "react";
 import Hosp from "../assets/Butwalhos.jpg";
+import { useNavigate } from "react-router-dom";
 const Hospitalblog = () => {
+  const navigation = useNavigate();
   return (
     <>
       <div>
@@ -11,20 +13,33 @@ const Hospitalblog = () => {
             Butwal Hospital Pvt.Ltd
           </div>
         </div>
-        <div className="grid grid-cols-2 w-11/12 mx-auto bg-green-500">
-          <div className="flex justify-center items-center">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat
-            consequuntur, placeat iste praesentium fuga, laudantium asperiores
-            tenetur error, minus quidem minima quis. Quis pariatur voluptatum
-            ipsum ullam, obcaecati perspiciatis ea quod. Nobis dignissimos vero
-            ratione quod quae, odio dolore mollitia cumque a debitis, facere
-            vitae assumenda rerum cupiditate placeat laudantium repudiandae
-            deserunt error reiciendis? Cupiditate distinctio culpa consectetur,
-            mollitia natus illum non velit, quibusdam tempora illo
-            exercitationem expedita voluptates ipsum sapiente, fugit impedit!
-            Iure nisi alias praesentium porro accusamus possimus. Sit ducimus
-            ipsa sed deserunt, iste temporibus debitis et rem quos inventore
-            eius aut at corrupti eveniet commodi omnis sunt.
+        <div className="grid grid-cols-2 bg-white py-10">
+          <div className="flex flex-col gap-10   w-8/12 mx-auto  h-fit">
+            <div className="flex justify-center">
+              <span className="text-5xl font-black text-black text-left">
+                Butwal <span className="text-blue-600">Hospital</span> Pvt.Ltd
+              </span>
+            </div>
+            <div className="w-full mx-auto ">
+              <p className="text-black">
+                Hospital provide medical care, treatment, and services to
+                patients who are suffering from illnesses, injuries, or other
+                health-related conditions. Hospitals typically offer a wide
+                range of medical services, from emergency care and surgery to
+                diagnostic testing and rehabilitation. They play a crucial role
+                in the healthcare system by providing comprehensive and
+                coordinated care to patients of all ages and backgrounds.
+              </p>
+            </div>
+            <div className="w-full flex justify-start items-center">
+              <button
+                onClick={() => navigation("/Profiledoctor")}
+                type="button"
+                class="text-white bg-blue-700 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center w-36 h-12  dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+              >
+                Views Doctors
+              </button>
+            </div>
           </div>
           <div>
             <iframe
