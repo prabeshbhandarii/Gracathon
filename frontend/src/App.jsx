@@ -41,14 +41,14 @@ const App = () => {
           <div className="">
             <BrowserRouter>
               <Routes>
-                <Route element={<Layout />}>
-                  <Route path="/" element={<Home />} />
-                  <Route path="/About" element={<About />} />
-                  <Route path="/Contact" element={<Contact />} />
-                  <Route path="/login" element={<Login />} />
-                  <Route path="/Signup" element={<Signup />} />
-                  <Route path="/Profiledoctor" element={<Profiledoctor />} />
-                  <Route path="/Hospital/:id" element={<Hospitalblog />} />
+                <Route path="/" element={<Layout />}>
+                  <Route index element={<Home />} />
+                  <Route path="About" element={<About />} />
+                  <Route path="Contact" element={<Contact />} />
+                  <Route path="login" element={<Login />} />
+                  <Route path="Signup" element={<Signup />} />
+                  <Route path="Profiledoctor" element={<Profiledoctor />} />
+                  <Route path="Hospital/:id" element={<Hospitalblog />} />
                 </Route>
 
                 <Route path="/cms" element={<Sidebarcms />}>
