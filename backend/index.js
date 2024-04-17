@@ -1,12 +1,15 @@
 
+import express from 'express';
+import cors from 'cors';
+import cookieParser from 'cookie-parser';
+import { connectToDb } from './db/db.js';
+import userRoute from "./routes/user.route.js"
+import hospitalRoute from "./routes/hospital.route.js"
 
-const express = require("express");
-const cookieParser = require('cookie-parser');
-const  connectToDb  = require("./db/db");
 
 const app = express();
 
-
+app.use(cors())
 app.use(cookieParser())
 app.use(express.urlencoded({extended: true}))
 
@@ -16,7 +19,10 @@ app.get("/", (req, res) => {
     res.send("Welcome")
 })
 
+app.use("/api/v1/user", userRoute)
+app.use("/api/v1/hospital", hospitalRoute)
 
-app.listen(8080, (req, res) => {
+
+app.listen(3000, (req, res) => {
     console.log("listening on port 8080")
 })
