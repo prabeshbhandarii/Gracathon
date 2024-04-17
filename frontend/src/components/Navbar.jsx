@@ -2,6 +2,7 @@ import React from "react";
 import { Link, Outlet } from "react-router-dom";
 
 const Navbar = () => {
+  
   const navData = [
     {
       title: "Home",
@@ -19,16 +20,12 @@ const Navbar = () => {
       title: "Login",
       path: "/login",
     },
-    {
-      title: "Sign Up",
-      path: "/Blog",
-    },
   ];
 
   return (
     <>
-      <div className="navbar bg-[#FDE2FF] text-[#41518B]">
-        <div className="navbar-start">
+      <div className="navbar  bg-[#FDE2FF] text-[#41518B] ">
+        <div className="navbar-start w-fit">
           <div className="dropdown">
             <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
               <svg
@@ -51,36 +48,70 @@ const Navbar = () => {
               className="menu menu-sm dropdown-content mt-15 z-[1] p-4 shadow bg-white rounded-box w-52  font-semibold "
             >
               {navData.map((val, i) => {
-                return (
-                  <div className="">
-                    <Link
-                      key={i}
-                      to={val.path}
-                      className=" hover:text-red-500 text-[#41518B] m-4"
-                    >
-                      {val.title}
-                    </Link>
-                  </div>
-                );
-              })}
+            return (
+              <div className="">
+                <Link
+                  key={i}
+                  to={val.path}
+                  className=" hover:text-red-500 text-[#41518B] m-4"
+                >
+                  {val.title}
+                </Link>
+              </div>
+            );
+          })}
+             
             </ul>
           </div>
-          <a className=" hover:bg-transparent border-none cursor-pointer text-lg ml-5 font-semibold">
-            Carer
-          </a>
+          <a className=" hover:bg-transparent border-none cursor-pointer text-lg ml-20 font-semibold">Carer</a>
         </div>
         <div className="navbar-center hidden lg:flex">
-          <ul className="menu w-[85vw]  flex justify-evenly menu-horizontal font-semibold text-[15px] hover:ease-in px-1">
-            {navData.map((val, i) => {
-              return (
-                <div className="btn btn-ghost ">
-                  <Link key={i} to={val.path} className="  text-[#41518B] ">
-                    {val.title}
-                  </Link>
+          <ul className="menu w-[80vw]  flex justify-center menu-horizontal font-semibold text-[15px] hover:ease-in px-1">
+         
+              <div className="btn btn-ghost flex gap-8 justify-center">
+
+              <Link
+                  to={"/"}
+                  className="  text-[#41518B] "
+                >
+                  Home
+                </Link>
                 </div>
-              );
-            })}
+
+              <div className="btn btn-ghost flex gap-8 justify-center">
+
+              <Link
+                  to={"/About"}
+                  className="  text-[#41518B] "
+                >
+                  About
+                </Link>
+                </div>
+
+              <div className="btn btn-ghost flex gap-8 justify-center">
+
+              <Link
+                  to={"/Contact"}
+                  className="  text-[#41518B] "
+                >
+                  Contact
+                </Link>
+                </div>
+
+              
+         
           </ul>
+          
+               <Link
+                  to={"/login"}
+                  className=" bg-blue-600 text-white px-4 py-2 rounded-lg hover:opacity-80"
+                >
+                  Login
+                </Link>
+                {/* <Link to={"/profile"} className="flex items-center gap-4">
+                  <img src="" alt="" className="h-10 w-10 rounded-full bg-black "/>
+                  <p>Username</p>
+                </Link> */}
         </div>
       </div>
       <Outlet />
