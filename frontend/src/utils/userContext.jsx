@@ -1,4 +1,4 @@
-import React, { createContext, useState } from "react";
+import React, { createContext, useEffect, useState } from "react";
 
 // Step 1: Create a context to hold user data
 const UserContext = createContext();
@@ -9,8 +9,16 @@ const UserProvider = ({ children }) => {
   const [hospitalData, setHospitalData] = useState(null);
 
   const updateUser = (data) => {
+    console.log(data);
     setUserData(data);
   };
+  useEffect(() => {
+    if (localStorage.getItem("user")) {
+      let data = localStorage.getItem("user");
+      let fil = JSON.parse(data);
+      updateUser(fil);
+    }
+  }, [localStorage]);
 
   const updateHospital = (data) => {
     setHospitalData(data)

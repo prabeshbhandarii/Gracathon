@@ -71,6 +71,7 @@ const Navbar = () => {
                 </Link>
             }
 
+
             {/* <Link to={"/profile"} className="flex items-center gap-4">
                   <img src="" alt="" className="h-10 w-10 rounded-full bg-black "/>
                   <p>Username</p>
