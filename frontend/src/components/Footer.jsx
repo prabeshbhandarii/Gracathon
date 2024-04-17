@@ -111,7 +111,7 @@ const Footer = () => {
           </aside>
         </footer> */}
 
-        <footer className="bg-blue-600  ">
+        <footer className="bg-gradient-to-r from-cyan-500 to-blue-500 ">
           <div className="  w-10/12 mx-auto p-4 py-10 ">
             <div className="md:flex md:justify-between">
               <div className="mb-6 md:mb-0">

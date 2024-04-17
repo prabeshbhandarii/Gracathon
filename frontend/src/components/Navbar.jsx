@@ -23,7 +23,7 @@ const Navbar = () => {
 
   return (
     <>
-      <div className="navbar bg-blue-600  text-white    h-20 flex justify-around items-center ">
+      <div className="navbar bg-gradient-to-r from-cyan-500 to-blue-500  text-white    h-20 flex justify-around items-center ">
         <div className=" flex justify-around items-center h-20 w-11/12 mx-auto ">
           <div>
             {" "}
@@ -32,21 +32,21 @@ const Navbar = () => {
             </a>
           </div>
           <div className=" gap-4">
-            <ul className="menu w-[80vw]  flex justify-center text-lg menu-horizontal gap-10 font-semibold text-[15px] hover:ease-in px-1">
+            <ul className="menu w-[80vw]  flex justify-center  menu-horizontal gap-10 font-semibold text-[15px] hover:ease-in px-1">
               <div className="btn btn-ghost flex gap-8 justify-center">
-                <Link to={"/"} className="   ">
+                <Link to={"/"} className=" text-lg font-semibold  ">
                   Home
                 </Link>
               </div>
 
               <div className="btn btn-ghost flex gap-8 justify-center">
-                <Link to={"/About"} className="  ">
+                <Link to={"/About"} className=" text-lg font-semibold ">
                   About
                 </Link>
               </div>
 
               <div className="btn btn-ghost flex gap-8 justify-center">
-                <Link to={"/Contact"} className="   ">
+                <Link to={"/Contact"} className=" text-lg font-semibold  ">
                   Contact
                 </Link>
               </div>

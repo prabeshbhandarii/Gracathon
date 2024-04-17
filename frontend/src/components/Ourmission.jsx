@@ -20,7 +20,7 @@ const Ourmission = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 1 }}
                 align="left"
-                className="w-10/12"
+                className="w-10/12 text-black"
               >
                 Our mission at Carer is to revolutionize healthcare
                 accessibility by providing a user-friendly platform that

@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 const Ourdoctors = () => {
   return (
     <>
-      <motion.div className="py-28 w-full h-fit">
+      <motion.div className="py-28 w-full h-fit bg-white">
         <div className="w-full  flex justify-center items-center py-5">
           <span className="text-[#6C46AB] text-5xl font-black underline ">
             Our Doctors
@@ -28,7 +28,7 @@ const Ourdoctors = () => {
             transition={{ duration: 1 }}
             className=""
           >
-            <p className=" p-10 text-md">
+            <p className=" p-10 text-md text-black">
               Carer is proud to offer access to more than 5000 trusted doctors
               in our network. These doctors cover a wide range of medical fields
               and specialties, ensuring that our users can find the right
