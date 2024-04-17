@@ -1,25 +1,93 @@
-import React from "react";
+import React, { useState } from "react";
 import { FaHospitalUser } from "react-icons/fa6";
 import { FaHospital } from "react-icons/fa";
-import {
-  BrowserRouter as Router,
-  Routes,
-  Route,
-  BrowserRouter,
-} from "react-router-dom";
+import {useNavigate} from "react-router-dom"
 
-const login = () => {
+const Login = () => {
 
-  function routing(){
-    <BrowserRouter>
-          <Routes>
+  const navigate = useNavigate()
 
-              <Route path="/Signup" element={<Signup />} />
-          </Routes>
-        </BrowserRouter>
+  const [user, setUser] = useState({
+    email: "",
+    password: "",
+})
 
-  }
+const [hospital, setHospital] = useState({
+    email: "",
+    password: "", 
+})
 
+const [loginAs, setLoginAs] = useState("user")
+
+const userOnchangeHandler = (e)=>{
+    setUser((prev)=>(
+        {
+            ...prev,
+            [e.target.name]: e.target.value
+        }
+    ))
+}
+
+const hospitalOnchangeHandler = (e)=>{
+    setHospital((prev)=>(
+        {
+            ...prev,
+            [e.target.name]: e.target.value
+        }
+    ))
+}
+
+const handleUserLogin = async(e) =>{
+     e.preventDefault()
+        try {
+            const res = await fetch("http://localhost:3000/api/v1/user/login",{
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                  },
+                 body: JSON.stringify(user)
+            })
+
+            const data = res.json().data
+
+            console.log(data);
+
+            if(!data.success){
+
+           throw new Error("Error while login")
+            }
+
+            navigate("/")
+
+          
+
+            
+        } catch (error) {
+            console.log("Error while login User")
+        }
+}
+
+const handleHospitalLogin = async(e) =>{
+  e.preventDefault()
+    try {
+        const res = await fetch("http://localhost:3000/api/v1/hospital/login",{
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+              },
+             body: JSON.stringify(hospital)
+        })
+
+        const data = res.json().data
+
+        console.log(data);
+
+        localStorage.setItem("hospital", JSON.stringify(data))
+
+    } catch (error) {
+        console.log("Error while login Hospital")
+    }
+}
   return (
     <div className="hero bg-[#F7F7F7] min-h-screen ">
       <div className="hero-content flex-col lg:flex-row  justify-center items-center ">
@@ -28,11 +96,11 @@ const login = () => {
 
           <div className="py-6 flex justify-center items-center">
           
-            <button className="btn hover:text-white m-4 bg-[#ffffff] text-[#41518B]">
+            <button onClick={()=> setLoginAs("user")} className="btn hover:text-white m-4 bg-[#ffffff] text-[#41518B]">
             <FaHospitalUser className="w-5 h-5"/>
                Login as a User
             </button>
-            <button className="btn m-4 bg-white hover:text-white text-[#41518B]">
+            <button onClick={()=> setLoginAs("hospital")} className="btn m-4 bg-white hover:text-white text-[#41518B]">
             <FaHospital  className="w-5 h-5"/>
                Login as a Hospital
             </button>
@@ -43,53 +111,113 @@ const login = () => {
 
         
 
-        <div className="card shrink-0 w-full max-w-sm shadow-2xl bg-white ">
-          <form className="card-body">
-            <div className="form-control">
-              <label className="label">
-                <span className="label-text text-[#41518B] font-semibold">Email</span>
-              </label>
-              <input
-                type="email"
-                placeholder="Enter you email"
-                className="input input-bordered bg-[#fffff9]"
-                required
-              />
-            </div>
-            <div className="form-control">
-              <label className="label">
-                <span className="label-text text-[#41518B] font-semibold">Password</span>
-              </label>
-              <input
-                type="password"
-                placeholder="Enter your password"
-                className="input input-bordered  bg-[#fffff9]"
-                required
-              />
-              <label className="label">
-                <a href="#" className="label-text-alt link link-hover">
-                  Forgot password?
-                </a>
-              </label>
-            </div>
-            <div className="form-control mt-6">
-            <button className="btn m-4 bg-[#f1f1f1] border-none hover:text-white text-[#41518B]">
+       {
+        loginAs === "user" && (
             
-               Login
-            </button>
-            <hr />
-            <button className="btn mt-4 ml-4 mr-4 bg-[#f1f1f1] border-none hover:text-white text-[#41518B]" onClick={(routing)={
+            <div className="card shrink-0 w-full max-w-sm shadow-2xl bg-white ">
+            <form className="card-body">
+                <h1>User Login</h1>
+              <div className="form-control">
+                <label className="label">
+                  <span className="label-text text-[#41518B] font-semibold">Email</span>
+                </label>
+                <input
+                  type="email"
+                  placeholder="Enter you email"
+                  className="input input-bordered bg-[#fffff9]"
+                  required
+                  name="email"
+                  onChange={userOnchangeHandler}
+                />
+              </div>
+              <div className="form-control">
+                <label className="label">
+                  <span className="label-text text-[#41518B] font-semibold">Password</span>
+                </label>
+                <input
+                  type="password"
+                  placeholder="Enter your password"
+                  className="input input-bordered  bg-[#fffff9]"
+                  required
+                  name="password"
+                  onChange={userOnchangeHandler}
+                />
+                <label className="label">
+                  <a href="#" className="label-text-alt link link-hover">
+                    Forgot password?
+                  </a>
+                </label>
+              </div>
+              <div className="form-control mt-6">
+              <button onClick={handleUserLogin} className="btn m-4 bg-[#f1f1f1] border-none hover:text-white text-[#41518B]">
+              
+                 Login
+              </button>
+              <hr />
+              <button className="btn mt-4 ml-4 mr-4 bg-[#f1f1f1] border-none hover:text-white text-[#41518B]">
+              
+                 Create a New Account
+              </button>
+              </div>
+            </form>
+          </div>
+        )
+       }
 
-            }}>
-            
-               Create a New Account
-            </button>
-            </div>
-          </form>
-        </div>
+       {
+        loginAs === "hospital" && (
+            <div className="card shrink-0 w-full max-w-sm shadow-2xl bg-white ">
+            <form className="card-body">
+                <h1>Hospital Login</h1>
+              <div className="form-control">
+                <label className="label">
+                  <span className="label-text text-[#41518B] font-semibold">Email</span>
+                </label>
+                <input
+                  type="email"
+                  placeholder="Enter you email"
+                  className="input input-bordered bg-[#fffff9]"
+                  required
+                  name="email"
+                  onChange={hospitalOnchangeHandler}
+                />
+              </div>
+              <div className="form-control">
+                <label className="label">
+                  <span className="label-text text-[#41518B] font-semibold">Password</span>
+                </label>
+                <input
+                  type="password"
+                  placeholder="Enter your password"
+                  className="input input-bordered  bg-[#fffff9]"
+                  required
+                  name="password"
+                  onChange={hospitalOnchangeHandler}
+                />
+                <label className="label">
+                  <a href="#" className="label-text-alt link link-hover">
+                    Forgot password?
+                  </a>
+                </label>
+              </div>
+              <div className="form-control mt-6">
+              <button onClick={handleHospitalLogin} className="btn m-4 bg-[#f1f1f1] border-none hover:text-white text-[#41518B]">
+              
+                 Login
+              </button>
+              <hr />
+              <button onCanPlay={"/Signup"} className="btn mt-4 ml-4 mr-4 bg-[#f1f1f1] border-none hover:text-white text-[#41518B]">
+              
+                 Create a New Account
+              </button>
+              </div>
+            </form>
+          </div>
+        )
+       }
       </div>
     </div>
   );
 };
 
-export default login;
+export default Login;
