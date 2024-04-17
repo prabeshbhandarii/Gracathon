@@ -1,96 +1,90 @@
 import React, { useState } from "react";
 import { FaHospitalUser } from "react-icons/fa6";
 import { FaHospital } from "react-icons/fa";
-import {useNavigate} from "react-router-dom"
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 const Login = () => {
-
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const [user, setUser] = useState({
-    username:"",
+    username: "",
     email: "",
     password: "",
-})
+  });
 
-console.log(user);
+  console.log(user);
 
-const [hospital, setHospital] = useState({
-    hospitalName:"",
+  const [hospital, setHospital] = useState({
+    hospitalName: "",
     email: "",
-    password: "", 
-})
+    password: "",
+  });
 
-console.log(hospital)
-const [loginAs, setLoginAs] = useState("user")
+  console.log(hospital);
+  const [loginAs, setLoginAs] = useState("user");
 
-const userOnchangeHandler = (e)=>{
-    setUser((prev)=>(
-        {
-            ...prev,
-            [e.target.name]: e.target.value
-        }
-    ))
-}
+  const userOnchangeHandler = (e) => {
+    setUser((prev) => ({
+      ...prev,
+      [e.target.name]: e.target.value,
+    }));
+  };
 
-const hospitalOnchangeHandler = (e)=>{
-    setHospital((prev)=>(
-        {
-            ...prev,
-            [e.target.name]: e.target.value
-        }
-    ))
-}
+  const hospitalOnchangeHandler = (e) => {
+    setHospital((prev) => ({
+      ...prev,
+      [e.target.name]: e.target.value,
+    }));
+  };
 
-const handleUserLogin = async(e) =>{
-     e.preventDefault()
-        try {
-            const res = await axios.post("http://localhost:3000/api/v1/user/signup", user)
-
-            console.log(res)
-
-            const data = res.data
-
-            console.log(data);
-
-            if(!data.success){
-
-           throw new Error("Error while Singing up")
-            }
-
-            navigate("/login")
-
-          
-
-            
-        } catch (error) {
-            console.log("Error while signing User")
-        }
-}
-
-const handleHospitalLogin = async(e) =>{
-  e.preventDefault()
+  const handleUserLogin = async (e) => {
+    e.preventDefault();
     try {
-      const res = await axios.post("http://localhost:3000/api/v1/hospital/signup", hospital)
+      const res = await axios.post(
+        "http://localhost:3000/api/v1/user/signup",
+        user
+      );
 
-        const data = res.data
+      console.log(res);
 
-        console.log(data);
+      const data = res.data;
 
-        if(!data.success){
+      console.log(data);
 
-          throw new Error("Error while Singing up")
-           }
+      if (!data.success) {
+        throw new Error("Error while Singing up");
+      }
 
-        setLoginAs("hospital")
-
-        navigate("/login")
-
+      navigate("/login");
     } catch (error) {
-        console.log("Error while signing Hospital")
+      console.log("Error while signing User");
     }
-}
+  };
+
+  const handleHospitalLogin = async (e) => {
+    e.preventDefault();
+    try {
+      const res = await axios.post(
+        "http://localhost:3000/api/v1/hospital/signup",
+        hospital
+      );
+
+      const data = res.data;
+
+      console.log(data);
+
+      if (!data.success) {
+        throw new Error("Error while Singing up");
+      }
+
+      setLoginAs("hospital");
+
+      navigate("/login");
+    } catch (error) {
+      console.log("Error while signing Hospital");
+    }
+  };
   return (
     <div className="hero bg-[#F7F7F7] min-h-screen ">
       <div className="hero-content flex-col lg:flex-row-reverse justify-center items-center ">
@@ -98,31 +92,33 @@ const handleHospitalLogin = async(e) =>{
           <h1 className="text-5xl font-bold text-[#41518B]">Sign up</h1>
 
           <div className="py-6 flex justify-center items-center">
-          
-            <button onClick={()=> setLoginAs("user")} className="btn hover:text-white m-4 bg-[#ffffff] text-[#41518B]">
-            <FaHospitalUser className="w-5 h-5"/>
-               Sign up as a User
+            <button
+              onClick={() => setLoginAs("user")}
+              className="btn hover:text-white m-4 bg-[#ffffff] text-[#41518B]"
+            >
+              <FaHospitalUser className="w-5 h-5" />
+              Sign up as a User
             </button>
-            <button onClick={()=> setLoginAs("hospital")} className="btn m-4 bg-white hover:text-white text-[#41518B]">
-            <FaHospital  className="w-5 h-5"/>
-               Register Hospital
+            <button
+              onClick={() => setLoginAs("hospital")}
+              className="btn m-4 bg-white hover:text-white text-[#41518B]"
+            >
+              <FaHospital className="w-5 h-5" />
+              Register Hospital
             </button>
-            
           </div>
           <hr className="bg-black" />
         </div>
 
-        
-
-       {
-        loginAs === "user" && (
-            
-            <div className="card shrink-0 w-full max-w-sm shadow-2xl bg-white ">
+        {loginAs === "user" && (
+          <div className="card shrink-0 w-full max-w-sm shadow-2xl bg-white ">
             <form className="card-body">
-                <h1>User Signup</h1>
+              <h1>User Signup</h1>
               <div className="form-control">
                 <label className="label">
-                  <span className="label-text text-[#41518B] font-semibold">Username</span>
+                  <span className="label-text text-[#41518B] font-semibold">
+                    Username
+                  </span>
                 </label>
                 <input
                   type="text"
@@ -135,7 +131,9 @@ const handleHospitalLogin = async(e) =>{
               </div>
               <div className="form-control">
                 <label className="label">
-                  <span className="label-text text-[#41518B] font-semibold">Email</span>
+                  <span className="label-text text-[#41518B] font-semibold">
+                    Email
+                  </span>
                 </label>
                 <input
                   type="email"
@@ -148,7 +146,9 @@ const handleHospitalLogin = async(e) =>{
               </div>
               <div className="form-control">
                 <label className="label">
-                  <span className="label-text text-[#41518B] font-semibold">Password</span>
+                  <span className="label-text text-[#41518B] font-semibold">
+                    Password
+                  </span>
                 </label>
                 <input
                   type="password"
@@ -165,29 +165,30 @@ const handleHospitalLogin = async(e) =>{
                 </label>
               </div>
               <div className="form-control mt-6">
-              <button onClick={handleUserLogin} className="btn m-4 bg-[#f1f1f1] border-none hover:text-white text-[#41518B]">
-              
-                 Sign up
-              </button>
-              <hr />
-              <button className="btn mt-4 ml-4 mr-4 bg-[#f1f1f1] border-none hover:text-white text-[#41518B]">
-              
-                 Already have an account?
-              </button>
+                <button
+                  onClick={handleUserLogin}
+                  className="btn m-4 bg-[#f1f1f1] border-none hover:text-white text-[#41518B]"
+                >
+                  Sign up
+                </button>
+                <hr />
+                <button className="btn mt-4 ml-4 mr-4 bg-[#f1f1f1] border-none hover:text-white text-[#41518B]">
+                  Already have an account?
+                </button>
               </div>
             </form>
           </div>
-        )
-       }
+        )}
 
-       {
-        loginAs === "hospital" && (
-            <div className="card shrink-0 w-full max-w-sm shadow-2xl bg-white ">
+        {loginAs === "hospital" && (
+          <div className="card shrink-0 w-full max-w-sm shadow-2xl bg-white ">
             <form className="card-body">
-                <h1>Register Hospital</h1>
+              <h1>Register Hospital</h1>
               <div className="form-control">
                 <label className="label">
-                  <span className="label-text text-[#41518B] font-semibold">Hospital Name</span>
+                  <span className="label-text text-[#41518B] font-semibold">
+                    Hospital Name
+                  </span>
                 </label>
                 <input
                   type="text"
@@ -200,7 +201,9 @@ const handleHospitalLogin = async(e) =>{
               </div>
               <div className="form-control">
                 <label className="label">
-                  <span className="label-text text-[#41518B] font-semibold">Email</span>
+                  <span className="label-text text-[#41518B] font-semibold">
+                    Email
+                  </span>
                 </label>
                 <input
                   type="email"
@@ -213,7 +216,9 @@ const handleHospitalLogin = async(e) =>{
               </div>
               <div className="form-control">
                 <label className="label">
-                  <span className="label-text text-[#41518B] font-semibold">Password</span>
+                  <span className="label-text text-[#41518B] font-semibold">
+                    Password
+                  </span>
                 </label>
                 <input
                   type="password"
@@ -230,20 +235,23 @@ const handleHospitalLogin = async(e) =>{
                 </label>
               </div>
               <div className="form-control mt-6">
-              <button onClick={handleHospitalLogin} className="btn m-4 bg-[#f1f1f1] border-none hover:text-white text-[#41518B]">
-              
-                 Sign up
-              </button>
-              <hr />
-              <button onCanPlay={"/Signup"} className="btn mt-4 ml-4 mr-4 bg-[#f1f1f1] border-none hover:text-white text-[#41518B]">
-              
-               Already have an account?
-              </button>
+                <button
+                  onClick={handleHospitalLogin}
+                  className="btn m-4 bg-[#f1f1f1] border-none hover:text-white text-[#41518B]"
+                >
+                  Sign up
+                </button>
+                <hr />
+                <button
+                  onCanPlay={"/Signup"}
+                  className="btn mt-4 ml-4 mr-4 bg-[#f1f1f1] border-none hover:text-white text-[#41518B]"
+                >
+                  Already have an account?
+                </button>
               </div>
             </form>
           </div>
-        )
-       }
+        )}
       </div>
     </div>
   );
