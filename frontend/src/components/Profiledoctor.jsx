@@ -7,36 +7,53 @@ const Doctor = [
     qualification: "Cardiology",
     appointment: "Take an Appointment",
     image: "./src/assets/Pp.jpg",
+    from: "8:00",
+    to: "8:30",
+    phonenumber: "98124426159",
   },
   {
     name: "Dr. Sanchit Pandey",
     qualification: "Neurology",
     appointment: "Take an Appointment",
     image: "./src/assets/sp.jpg",
+    from: "9:00",
+    to: "10:00",
+    phonenumber: "98124426159",
   },
   {
     name: "Dr. Anu Pandey",
     qualification: "Orthopedics: ",
     appointment: "Take an Appointment",
     image: "./src/assets/Ap.jpg",
+    from: "9:30",
+    to: "10:00",
+    phonenumber: "98124426159",
   },
   {
     name: "Dr. Shikshya Acharya",
     qualification: "Gynologist",
     appointment: "Take an Appointment",
     image: "./src/assets/Sa.jpg",
+    from: "11:00",
+    to: "12:00",
+    phonenumber: "98124426159",
   },
   {
     name: "Dr. Pratish Bhandari",
     qualification: "Dermatology",
     appointment: "Take an Appointment",
     image: "./src/assets/Ptishb.jpg",
+    from: "1:00",
+    to: "3:00",
+    phonenumber: "98124426159",
   },
   {
     name: "Dr. Prabesh Bhandari",
     qualification: "Pulmonology: ",
     appointment: "Take an Appointment",
     image: "./src/assets/pb.jpg",
+    from: "5:00",
+    to: "6:00",
   },
 ];
 
@@ -85,8 +102,19 @@ const Profiledoctor = () => {
               <div className="card-body px-10">
                 <h2 className="card-title text-black">{val.name}</h2>
                 <p className="text-black">{val.qualification}</p>
+                <div className="flex ">
+                  <p className="text-black font-bold">From: {val.from}</p>
+                  <p className="text-black font-bold">To: {val.to}</p>
+                </div>
+                <p className="text-black text-sm">{val.phonenumber}</p>
+
                 <div className="">
-                  <Link to="/FormApp">
+                  <Link
+                    to="/FormApp"
+                    state={{
+                      doctor: val,
+                    }}
+                  >
                     <button className="bg-blue-600 p-2 rounded-lg text-white">
                       {val.appointment}
                     </button>

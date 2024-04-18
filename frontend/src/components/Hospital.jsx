@@ -41,7 +41,7 @@ const Appointmentbox = () => {
       <div className="py-20 w-11/12 mx-auto grid grid-cols-3 gap-10">
         {Hospital.map((val, i) => {
           return (
-            <Link to={`/Hospital/${i}`}>
+            <Link to={`/Hospital/${i}`} state={val}>
               <div className="card  card-compact w-80  h-96 grid  bg-white shadow-xl cursor-pointer hover:scale-105   transition-all delay-100 duration-300 ease-in-out">
                 <figure>
                   <img

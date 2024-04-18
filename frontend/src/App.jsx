@@ -58,7 +58,6 @@ const App = () => {
                   <Route path="Profiledoctor" element={<Profiledoctor />} />
                   <Route path="FormApp" element={<FormApp />} />
                   <Route path="Appointment" element={<Appointment />} />
-
                   <Route path="Hospital/:id" element={<Hospitalblog />} />
                 </Route>
                 <Route path="/cms" element={<Sidebarcms />}>
