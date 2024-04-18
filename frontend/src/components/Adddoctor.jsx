@@ -1,15 +1,62 @@
-import React from "react";
+import React, { useState } from "react";
+import axios from "../HOC/axios";
 
 const Adddoctor = () => {
+
+  const [doctor, setDoctor] = useState({
+    doctorName: "",
+    nmcNo: "",
+    gender: "",
+    qualification: "",
+    department: "",
+    charge: ""
+  })
+
+  console.log(doctor)
+
+
+  const handleOnChange = (e) => {
+
+    setDoctor((prev) => (
+      {
+        ...prev,
+        [e.target.name]: e.target.value
+      }
+    ))
+
+  }
+
+  const handleAddDoctor = async (e) => {
+    e.preventDefault()
+    try {
+
+      const res = await axios.post("/api/v1/hospital/createDoctor", doctor);
+
+      console.log(res);
+
+      const data = res.data;
+
+      if (!data.success) {
+        throw new Error("Error while creating doctor");
+      }
+
+      navigate("/kanvan");
+
+    } catch (error) {
+      throw new Error("Error while adding doctor")
+    }
+  }
+
   return (
     <div className="w-full h-screen ">
-      <form className=" flex flex-col gap-5  mt-20 mx-44">
+      <form onSubmit={handleAddDoctor} className=" flex flex-col gap-5  mt-20 mx-44">
         <div className="relative z-0 w-full  group">
           <input
             type="text"
-            name="floating_email"
+            name="doctorName"
             id="floating_email"
-            className="block py-2.5 px-0 w-full text-lg text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+            onChange={handleOnChange}
+            className="block py-2.5 px-0 w-full text-lg text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer"
             placeholder=" "
             required
           />
@@ -23,8 +70,9 @@ const Adddoctor = () => {
         <div className="relative z-0 w-full  group">
           <input
             type="text"
-            name="floating_password"
+            name="nmcNo"
             id="floating_password"
+            onChange={handleOnChange}
             className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-600 appearance-none   focus:outline-none focus:ring-0 focus:border-blue-600 peer"
             placeholder=" "
             required
@@ -39,9 +87,10 @@ const Adddoctor = () => {
         <div className="relative z-0 w-full  group">
           <input
             type="text"
-            name="repeat_password"
+            name="qualification"
+            onChange={handleOnChange}
             id="floating_repeat_password"
-            className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-600 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+            className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-600 appearance-none  dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
             placeholder=" "
             required
           />
@@ -58,7 +107,7 @@ const Adddoctor = () => {
               type="text"
               name="floating_first_name"
               id="floating_first_name"
-              className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+              className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none  dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
               placeholder=" "
               required
             />
@@ -72,9 +121,10 @@ const Adddoctor = () => {
           <div className="relative z-0 w-full  group">
             <input
               type="text"
-              name="floating_last_name"
+              name="department"
               id="floating_last_name"
-              className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+              onChange={handleOnChange}
+              className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none  dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
               placeholder=" "
               required
             />
@@ -89,11 +139,10 @@ const Adddoctor = () => {
         <div className="grid md:grid-cols-2 md:gap-6">
           <div className="relative z-0 w-full  group">
             <input
-              type="tel"
-              pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
-              name="floating_phone"
+              type="text"
+              name="charge"
               id="floating_phone"
-              className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+              className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none  dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
               placeholder=" "
               required
             />
@@ -109,7 +158,7 @@ const Adddoctor = () => {
               type="text"
               name="floating_company"
               id="floating_company"
-              className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+              className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none  dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
               placeholder=" "
               required
             />

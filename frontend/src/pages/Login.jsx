@@ -53,7 +53,7 @@ const Login = () => {
 
       console.log(data);
 
-            localStorage.setItem("token", JSON.stringify(data.token))
+      localStorage.setItem("token", JSON.stringify(data.token))
       if (!data.success) {
         throw new Error("Error while login");
       }
@@ -73,23 +73,17 @@ const Login = () => {
     try {
       const res = await axios
         .post("/api/v1/hospital/login", hospital)
-        .then((res) => {
-          console.log("pratik", res);
-          localStorage.setItem("hospital", res.data);
-        });
+
 
       const data = res.data;
 
-        console.log(data);
-
-        updateHospital(data)
-
-        localStorage.setItem("token", JSON.stringify(data.token))
-
-        navigate("/cms")
+      console.log(data);
 
 
-      localStorage.setItem("hospital", JSON.stringify(data));
+      localStorage.setItem("token", JSON.stringify(data.token))
+      console.log("kuhgjgjhg")
+
+      navigate("/cms")
     } catch (error) {
       console.log("Error while login Hospital");
     }
@@ -113,11 +107,10 @@ const Login = () => {
             <button
               onClick={() => setLoginAs("hospital")}
               className={`btn hover:text-white m-4 
-              ${
-                loginAs === "hospital"
+              ${loginAs === "hospital"
                   ? "bg-[#41518B] text-white"
                   : " text-[#41518B] bg-[#ffffff]"
-              }
+                }
               `}
             >
               <FaHospital className="w-5 h-5" />

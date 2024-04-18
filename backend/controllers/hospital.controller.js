@@ -70,7 +70,8 @@ export const loginHospital = async(req, res) => {
         .json({
             msg:"Successfully logged in",
             data: existingHospital,
-            success: true
+            success: true,
+            token
         })
     } catch (error) {
         console.error("Error logging hospital :", error);
