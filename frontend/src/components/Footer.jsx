@@ -115,11 +115,17 @@ const Footer = () => {
           <div className="  w-10/12 mx-auto p-4 py-10 ">
             <div className="md:flex md:justify-between">
               <div className="mb-6 md:mb-0">
-                <a href="https://flowbite.com/" className="flex items-center">
-                  <span className="self-center text-3xl font-semibold whitespace-nowrap text-white">
+                <div className="flex justify-center items-center gap-3">
+                  {" "}
+                  <img
+                    src="./src/assets/Logo.png"
+                    alt=""
+                    className="w-14 h-14"
+                  />
+                  <a className=" hover:bg-transparent text-white border-none cursor-pointer text-2xl  font-semibold">
                     Carer
-                  </span>
-                </a>
+                  </a>
+                </div>
               </div>
               <div className="grid grid-cols-2 gap-8 sm:gap-6 sm:grid-cols-3">
                 <div>
