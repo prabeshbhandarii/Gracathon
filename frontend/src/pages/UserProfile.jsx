@@ -1,7 +1,7 @@
 import React, { useContext, useRef, useState } from "react";
 import { useNavigate } from 'react-router-dom'
 import { UserContext } from "../utils/userContext.jsx";
-import axios from "axios";
+import axios from "../HOC/axios.jsx";
 import profilePic from "../assets/profile-icon.jpg"
 
 
@@ -42,7 +42,7 @@ function UserProfile() {
         e.preventDefault()
 
         try {
-            const res = await axios.post("http://localhost:3000/api/v1/user/update", formData)
+            const res = await axios.post("/api/v1/user/update", formData)
 
             console.log(res)
 
@@ -83,7 +83,7 @@ function UserProfile() {
         e.preventDefault()
 
         try {
-            const res = await axios.get("http://localhost:3000/api/v1/user/logout")
+            const res = await axios.get("/api/v1/user/logout")
 
             const data = res.data
 

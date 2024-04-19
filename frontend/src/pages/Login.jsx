@@ -53,14 +53,13 @@ const Login = () => {
 
       console.log(data);
 
-      localStorage.setItem("token", JSON.stringify(data.token))
+      localStorage.setItem("token", data.token)
       if (!data.success) {
         throw new Error("Error while login");
       }
 
       updateUser(data);
 
-      localStorage.setItem("user", JSON.stringify(data));
 
       navigate("/");
     } catch (error) {
@@ -80,7 +79,7 @@ const Login = () => {
       console.log(data);
 
 
-      localStorage.setItem("token", JSON.stringify(data.token))
+      localStorage.setItem("token", data.token)
       console.log("kuhgjgjhg")
 
       navigate("/cms")
